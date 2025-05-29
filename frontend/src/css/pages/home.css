@@ -1,0 +1,57 @@
+/* frontend/src/css/pages/home.css */
+.hero-section {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background-color: #f8f8f8;
+}
+
+.vision-section {
+  padding: 5rem 0;
+  background-color: #fffbe6;
+  text-align: center;
+}
+
+.vision-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.vision-text {
+  font-size: 1.1rem;
+  max-width: 800px;
+  margin: 0 auto;
+  color: var(--dark-color);
+}
+
+.categories-section {
+  padding: 5rem 0;
+  background: #ffffff;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.category-card {
+  text-align: center;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+  background: white;
+  cursor: pointer;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+}
+
+.category-image {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}

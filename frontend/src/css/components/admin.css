@@ -1,0 +1,44 @@
+/* frontend/src/css/components/admin.css */
+.admin-section {
+  padding: 4rem 0;
+  background: #fafafa;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.admin-form, .products-list {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.admin-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.vision-form, .image-upload-section {
+  margin-bottom: 3rem;
+}
+
+.slide-preview {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.slide-item {
+  flex: 1;
+  text-align: center;
+  background: #f0f0f0;
+  padding: 1rem;
+  border-radius: 10px;
+}

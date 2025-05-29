@@ -1,354 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIIA LUXE JEWELS - Premium Anti-Tarnish Jewelry</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>SIIA LUXE JEWELS</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <!-- Manifest & Robots -->
+  <link rel="manifest" href="/manifest.json">
+  <link rel="robots" href="/robots.txt">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/src/css/utils/reset.css">
+  <link rel="stylesheet" href="/src/css/utils/variables.css">
+  <link rel="stylesheet" href="/src/css/main.css">
+  <link rel="stylesheet" href="/src/css/components/header.css">
+  <link rel="stylesheet" href="/src/css/components/footer.css">
+  <link rel="stylesheet" href="/src/css/components/slideshow.css">
+  <link rel="stylesheet" href="/src/css/components/products.css">
+  <link rel="stylesheet" href="/src/css/components/forms.css">
+  <link rel="stylesheet" href="/src/css/components/admin.css">
+  <link rel="stylesheet" href="/src/css/pages/home.css">
+  <link rel="stylesheet" href="/src/css/pages/contact.css">
+  <link rel="stylesheet" href="/src/css/pages/auth.css">
+  <link rel="stylesheet" href="/src/css/responsive.css">
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <nav class="container">
-            <a href="#" class="logo" onclick="showHome()">SIIA LUXE</a>
-            <ul class="nav-links">
-                <li><a href="#" onclick="showHome()">Home</a></li>
-                <li><a href="#" onclick="showProducts('all')">Shop</a></li>
-                <li><a href="#" onclick="showContact()">Contact Us</a></li>
-                <li><a href="#" onclick="showTrackOrder()">Track Order</a></li>
-                <li><a href="#" onclick="showLogin()">Login/Signup</a></li>
-                <li><a href="#" onclick="showAdmin()">Admin</a></li>
-            </ul>
-            <a href="#" class="cart-icon" onclick="alert('Cart functionality coming soon!')">🛒 Cart (0)</a>
-        </nav>
-    </header>
+  <div id="app">
+    <!-- JavaScript will dynamically load page content here -->
+  </div>
 
-    <!-- Hero Slideshow -->
-    <section class="hero-section" id="home-section">
-        <div class="slideshow-container">
-            <div class="slide active" id="slide-1">
-            </div>
-            <div class="slide" id="slide-2">
-            </div>
-            <div class="slide" id="slide-3">
-            </div>
-            <div class="dots-container">
-                <span class="dot active" onclick="currentSlide(1)"></span>
-                <span class="dot" onclick="currentSlide(2)"></span>
-                <span class="dot" onclick="currentSlide(3)"></span>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact-section" id="contact-section" style="display: none;">
-        <div class="container">
-            <h2 class="section-title">Contact Us</h2>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;">
-                <div style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-                    <h3 style="color: #d4af37; margin-bottom: 1rem;">Get in Touch</h3>
-                    <div style="margin-bottom: 1rem;">
-                        <strong>📧 Email:</strong> info@siialuxe.com
-                    </div>
-                    <div style="margin-bottom: 1rem;">
-                        <strong>📞 Phone:</strong> +1 (555) 123-4567
-                    </div>
-                    <div style="margin-bottom: 1rem;">
-                        <strong>📍 Address:</strong> 123 Luxury Ave, Fashion District, NY 10001
-                    </div>
-                    <div>
-                        <strong>🕒 Hours:</strong> Mon-Fri 9AM-6PM, Sat 10AM-4PM
-                    </div>
-                </div>
-                <div style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-                    <h3 style="color: #d4af37; margin-bottom: 1rem;">Send Message</h3>
-                    <form>
-                        <div style="margin-bottom: 1rem;">
-                            <input type="text" placeholder="Your Name" style="width: 100%; padding: 0.8rem; border: 2px solid #e0e0e0; border-radius: 8px;">
-                        </div>
-                        <div style="margin-bottom: 1rem;">
-                            <input type="email" placeholder="Your Email" style="width: 100%; padding: 0.8rem; border: 2px solid #e0e0e0; border-radius: 8px;">
-                        </div>
-                        <div style="margin-bottom: 1rem;">
-                            <textarea placeholder="Your Message" rows="4" style="width: 100%; padding: 0.8rem; border: 2px solid #e0e0e0; border-radius: 8px;"></textarea>
-                        </div>
-                        <button type="submit" class="btn" style="width: 100%;">Send Message</button>
-                    </form>
-                </div>
-            </div>
-            <button onclick="showHome()" class="btn" style="margin-top: 2rem;">← Back to Home</button>
-        </div>
-    </section>
-
-    <!-- Track Order Section -->
-    <section class="track-order-section" id="track-order-section" style="display: none; padding: 5rem 0;">
-        <div class="container">
-            <h2 class="section-title">Track Your Order</h2>
-            <div style="max-width: 600px; margin: 0 auto; background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-                <div style="margin-bottom: 2rem;">
-                    <label style="display: block; margin-bottom: 0.5rem; font-weight: bold;">Order Number</label>
-                    <input type="text" id="order-number" placeholder="Enter your order number (e.g., SL123456)" style="width: 100%; padding: 0.8rem; border: 2px solid #e0e0e0; border-radius: 8px;">
-                </div>
-                <div style="margin-bottom: 2rem;">
-                    <label style="display: block; margin-bottom: 0.5rem; font-weight: bold;">Email Address</label>
-                    <input type="email" id="order-email" placeholder="Enter email used for order" style="width: 100%; padding: 0.8rem; border: 2px solid #e0e0e0; border-radius: 8px;">
-                </div>
-                <button onclick="trackOrder()" class="btn" style="width: 100%; margin-bottom: 1rem;">Track Order</button>
-                <div id="tracking-result" style="display: none; padding: 1rem; background: #f9f9f9; border-radius: 8px; margin-top: 1rem;"></div>
-            </div>
-            <button onclick="showHome()" class="btn" style="margin-top: 2rem;">← Back to Home</button>
-        </div>
-    </section>
-
-    <!-- Login/Signup Section -->
-    <section class="login-section" id="login-section" style="display: none; padding: 5rem 0;">
-        <div class="container">
-            <h2 class="section-title">Login / Signup</h2>
-            <div style="max-width: 500px; margin: 0 auto;">
-                <div style="display: flex; margin-bottom: 2rem; background: #f0f0f0; border-radius: 25px; padding: 0.5rem;">
-                    <button id="login-tab" onclick="showLoginForm()" class="btn" style="flex: 1; margin-right: 0.5rem;">Login</button>
-                    <button id="signup-tab" onclick="showSignupForm()" style="flex: 1; background: transparent; border: none; padding: 1rem; cursor: pointer;">Signup</button>
-                </div>
-                
-                <!-- Login Form -->
-                <div id="login-form" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-                    <form>
-                        <div style="margin-bottom: 1.5rem;">
-                            <label style="display: block; margin-bottom: 0.5rem; font-weight: bold;">Email</label>
-                            <input type="email" placeholder="Enter your email" style="width: 100%; padding: 0.8rem; border: 2px solid #e0e0e0; border-radius: 8px;">
-                        </div>
-                        <div style="margin-bottom: 1.5rem;">
-                            <label style="display: block; margin-bottom: 0.5rem; font-weight: bold;">Password</label>
-                            <input type="password" placeholder="Enter your password" style="width: 100%; padding: 0.8rem; border: 2px solid #e0e0e0; border-radius: 8px;">
-                        </div>
-                        <button type="submit" class="btn" style="width: 100%; margin-bottom: 1rem;">Login</button>
-                        <p style="text-align: center; color: #666;">
-                            <a href="#" style="color: #d4af37;">Forgot Password?</a>
-                        </p>
-                    </form>
-                </div>
-                
-                <!-- Signup Form -->
-                <div id="signup-form" style="display: none; background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-                    <form>
-                        <div style="margin-bottom: 1.5rem;">
-                            <label style="display: block; margin-bottom: 0.5rem; font-weight: bold;">Full Name</label>
-                            <input type="text" placeholder="Enter your full name" style="width: 100%; padding: 0.8rem; border: 2px solid #e0e0e0; border-radius: 8px;">
-                        </div>
-                        <div style="margin-bottom: 1.5rem;">
-                            <label style="display: block; margin-bottom: 0.5rem; font-weight: bold;">Email</label>
-                            <input type="email" placeholder="Enter your email" style="width: 100%; padding: 0.8rem; border: 2px solid #e0e0e0; border-radius: 8px;">
-                        </div>
-                        <div style="margin-bottom: 1.5rem;">
-                            <label style="display: block; margin-bottom: 0.5rem; font-weight: bold;">Password</label>
-                            <input type="password" placeholder="Create a password" style="width: 100%; padding: 0.8rem; border: 2px solid #e0e0e0; border-radius: 8px;">
-                        </div>
-                        <div style="margin-bottom: 1.5rem;">
-                            <label style="display: block; margin-bottom: 0.5rem; font-weight: bold;">Confirm Password</label>
-                            <input type="password" placeholder="Confirm your password" style="width: 100%; padding: 0.8rem; border: 2px solid #e0e0e0; border-radius: 8px;">
-                        </div>
-                        <button type="submit" class="btn" style="width: 100%;">Create Account</button>
-                    </form>
-                </div>
-            </div>
-            <button onclick="showHome()" class="btn" style="margin-top: 2rem;">← Back to Home</button>
-        </div>
-    </section>
-
-    <!-- Vision Section -->
-    <section class="vision-section" id="vision-section">
-        <div class="container">
-            <div class="vision-content">
-                <h2 class="vision-title">Our Vision</h2>
-                <p class="vision-text" id="vision-text">
-                    At SIIA LUXE JEWELS, we envision a world where elegance meets innovation. Our commitment to creating anti-tarnish jewelry stems from our belief that beauty should be eternal. Every piece we craft tells a story of timeless sophistication, designed to accompany you through life's most precious moments while maintaining its radiant allure for generations to come.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Categories Section -->
-    <section class="categories-section" id="categories">
-        <div class="container">
-            <h2 class="section-title">Our Exquisite Collections</h2>
-            <div class="categories-grid">
-                <div class="category-card" onclick="showProducts('necklaces')">
-                    <div class="category-image">💎</div>
-                    <div class="category-info">
-                        <h3>Necklaces</h3>
-                        <p>Elegant statement pieces and delicate chains</p>
-                    </div>
-                </div>
-                <div class="category-card" onclick="showProducts('earrings')">
-                    <div class="category-image">✨</div>
-                    <div class="category-info">
-                        <h3>Earrings</h3>
-                        <p>From subtle studs to dramatic drops</p>
-                    </div>
-                </div>
-                <div class="category-card" onclick="showProducts('bracelets')">
-                    <div class="category-image">🌟</div>
-                    <div class="category-info">
-                        <h3>Bracelets</h3>
-                        <p>Sophisticated wrist accessories</p>
-                    </div>
-                </div>
-                <div class="category-card" onclick="showProducts('rings')">
-                    <div class="category-image">💍</div>
-                    <div class="category-info">
-                        <h3>Rings</h3>
-                        <p>Timeless symbols of elegance</p>
-                    </div>
-                </div>
-                <div class="category-card" onclick="showProducts('sets')">
-                    <div class="category-image">👑</div>
-                    <div class="category-info">
-                        <h3>Jewelry Sets</h3>
-                        <p>Complete coordinated collections</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Products Section -->
-    <section class="products-section" id="products-section">
-        <div class="container">
-            <h2 class="section-title" id="products-title">Products</h2>
-            <button onclick="showHome()" class="btn" style="margin-bottom: 2rem;">← Back to Home</button>
-            <div class="products-grid" id="products-grid">
-                <!-- Products will be dynamically loaded here -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Admin Dashboard -->
-    <section class="admin-section" id="admin-section">
-        <div class="container">
-            <div class="admin-header">
-                <h2>Admin Dashboard</h2>
-                <button onclick="showHome()" class="btn">← Back to Website</button>
-            </div>
-            
-            <!-- Vision Management -->
-            <div class="vision-form">
-                <h3>Update Vision Statement</h3>
-                <form id="vision-form">
-                    <div class="form-group">
-                        <label>Vision Statement</label>
-                        <textarea id="vision-input" rows="6" placeholder="Enter your startup's vision statement...">At SIIA LUXE JEWELS, we envision a world where elegance meets innovation. Our commitment to creating anti-tarnish jewelry stems from our belief that beauty should be eternal. Every piece we craft tells a story of timeless sophistication, designed to accompany you through life's most precious moments while maintaining its radiant allure for generations to come.</textarea>
-                    </div>
-                    <button type="submit" class="btn">Update Vision</button>
-                </form>
-            </div>
-
-            <!-- Slideshow Image Management -->
-            <div class="image-upload-section">
-                <h3>Slideshow Images</h3>
-                <p>Paste your custom image URLs below. Images will automatically fill the entire slideshow area.</p>
-                <div class="slide-preview">
-                    <div class="slide-item">
-                        <div class="placeholder" id="slide-1-preview">Slide 1 - Paste URL below</div>
-                        <div class="slide-controls">
-                            <button onclick="clearSlideImage(1)">Clear</button>
-                        </div>
-                    </div>
-                    <div class="slide-item">
-                        <div class="placeholder" id="slide-2-preview">Slide 2 - Paste URL below</div>
-                        <div class="slide-controls">
-                            <button onclick="clearSlideImage(2)">Clear</button>
-                        </div>
-                    </div>
-                    <div class="slide-item">
-                        <div class="placeholder" id="slide-3-preview">Slide 3 - Paste URL below</div>
-                        <div class="slide-controls">
-                            <button onclick="clearSlideImage(3)">Clear</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group" style="margin-top: 1rem;">
-                    <label>Slide 1 Image URL</label>
-                    <input type="url" id="slide-1-url" placeholder="https://example.com/image1.jpg" onchange="updateSlideImage(1)">
-                </div>
-                <div class="form-group">
-                    <label>Slide 2 Image URL</label>
-                    <input type="url" id="slide-2-url" placeholder="https://example.com/image2.jpg" onchange="updateSlideImage(2)">
-                </div>
-                <div class="form-group">
-                    <label>Slide 3 Image URL</label>
-                    <input type="url" id="slide-3-url" placeholder="https://example.com/image3.jpg" onchange="updateSlideImage(3)">
-                </div>
-                <button onclick="applySlideImages()" class="btn">Apply Images to Slideshow</button>
-            </div>
-
-            <div class="admin-grid">
-                <div class="admin-form">
-                    <h3>Add New Product</h3>
-                    <form id="product-form">
-                        <div class="form-group">
-                            <label>Product Name</label>
-                            <input type="text" id="product-name" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Category</label>
-                            <select id="product-category" required>
-                                <option value="">Select Category</option>
-                                <option value="necklaces">Necklaces</option>
-                                <option value="earrings">Earrings</option>
-                                <option value="bracelets">Bracelets</option>
-                                <option value="rings">Rings</option>
-                                <option value="sets">Jewelry Sets</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Price ($)</label>
-                            <input type="number" id="product-price" step="0.01" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Description</label>
-                            <textarea id="product-description" rows="3"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>Image URL (optional)</label>
-                            <input type="url" id="product-image">
-                        </div>
-                        <button type="submit" class="btn">Add Product</button>
-                    </form>
-                </div>
-                <div class="products-list">
-                    <h3>Current Products</h3>
-                    <div id="admin-products-list">
-                        <!-- Products list will be loaded here -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>SIIA LUXE JEWELS</h3>
-                    <p>Premium anti-tarnish jewelry crafted with love and precision. Experience luxury that lasts.</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <p><a href="#" onclick="showHome()" style="color: #ccc;">Home</a></p>
-                    <p><a href="#" onclick="showProducts('all')" style="color: #ccc;">Collections</a></p>
-                    <p><a href="#" style="color: #ccc;">About Us</a></p>
-                </div>
-                <div class="footer-section">
-                    <h3>Contact Info</h3>
-                    <p>Email: info@siialuxe.com</p>
-                    <p>Phone: +1 (555) 123-4567</p>
-                </div>
-            </div>
-            <p>&copy; 2025 SIIA LUXE JEWELS. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+  <!-- JavaScript Files -->
+  <script src="/src/js/main.js"></script>
+  <script src="/src/js/components/navigation.js"></script>
+  <script src="/src/js/components/slideshow.js"></script>
+  <script src="/src/js/pages/home.js"></script>
+  <script src="/src/js/pages/products.js"></script>
+  <script src="/src/js/pages/contact.js"></script>
+  <script src="/src/js/pages/auth.js"></script>
+  <script src="/src/js/pages/trackOrder.js"></script>
+  <script src="/src/js/pages/admin.js"></script>
 </body>
 </html>

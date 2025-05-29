@@ -1,0 +1,38 @@
+<!-- frontend/src/pages/admin/products.html -->
+<section class="admin-section" id="admin-products">
+  <div class="container">
+    <h2 class="section-title">Manage Products</h2>
+    <form id="product-form" class="admin-form">
+      <div class="form-group">
+        <label>Product Name</label>
+        <input type="text" id="product-name" required>
+      </div>
+      <div class="form-group">
+        <label>Category</label>
+        <select id="product-category">
+          <option value="necklaces">Necklaces</option>
+          <option value="earrings">Earrings</option>
+          <option value="bracelets">Bracelets</option>
+          <option value="rings">Rings</option>
+          <option value="sets">Jewelry Sets</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Price</label>
+        <input type="number" id="product-price" step="0.01">
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <textarea id="product-description"></textarea>
+      </div>
+      <div class="form-group">
+        <label>Image URL</label>
+        <input type="url" id="product-image">
+      </div>
+      <button type="submit" class="btn">Add Product</button>
+    </form>
+    <div id="product-list">
+      <!-- Existing products will be displayed here -->
+    </div>
+  </div>
+</section>

@@ -1,0 +1,32 @@
+<!-- frontend/src/pages/auth.html -->
+<section class="auth-section" id="auth-section">
+  <div class="container">
+    <h2 class="section-title">Login / Signup</h2>
+    <div class="auth-tabs">
+      <button id="login-tab" onclick="showLoginForm()" class="btn">Login</button>
+      <button id="signup-tab" onclick="showSignupForm()" class="btn secondary">Signup</button>
+    </div>
+    <div class="auth-forms">
+      <!-- Login Form -->
+      <form id="login-form">
+        <label>Email</label>
+        <input type="email" placeholder="Enter your email">
+        <label>Password</label>
+        <input type="password" placeholder="Enter your password">
+        <button type="submit" class="btn">Login</button>
+      </form>
+      <!-- Signup Form -->
+      <form id="signup-form" style="display: none;">
+        <label>Full Name</label>
+        <input type="text" placeholder="Enter your full name">
+        <label>Email</label>
+        <input type="email" placeholder="Enter your email">
+        <label>Password</label>
+        <input type="password" placeholder="Create a password">
+        <label>Confirm Password</label>
+        <input type="password" placeholder="Confirm your password">
+        <button type="submit" class="btn">Create Account</button>
+      </form>
+    </div>
+  </div>
+</section>

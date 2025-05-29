@@ -1,0 +1,8 @@
+/* frontend/src/css/utils/variables.css */
+:root {
+  --primary-color: #d4af37;
+  --secondary-color: #f4e4a6;
+  --dark-color: #333;
+  --light-color: #fefefe;
+  --font-family: 'Georgia', serif;
+}

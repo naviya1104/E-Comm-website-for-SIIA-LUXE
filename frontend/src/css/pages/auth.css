@@ -1,0 +1,35 @@
+/* frontend/src/css/pages/auth.css */
+.login-section {
+  padding: 5rem 0;
+  background-color: #fdfdfd;
+}
+
+.auth-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.auth-tabs .btn.secondary {
+  background: transparent;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+}
+
+.auth-tabs .btn.secondary:hover {
+  background: var(--primary-color);
+  color: #fff;
+}
+
+.auth-forms {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.auth-forms form {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
