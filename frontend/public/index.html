@@ -1,47 +1,88 @@
+<!-- This will be a cleaned and modular base HTML file following your structure -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>SIIA LUXE JEWELS</title>
-
-  <!-- Favicon -->
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
-
-  <!-- Manifest & Robots -->
-  <link rel="manifest" href="/manifest.json">
-  <link rel="robots" href="/robots.txt">
-
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="/src/css/utils/reset.css">
-  <link rel="stylesheet" href="/src/css/utils/variables.css">
   <link rel="stylesheet" href="/src/css/main.css">
-  <link rel="stylesheet" href="/src/css/components/header.css">
-  <link rel="stylesheet" href="/src/css/components/footer.css">
-  <link rel="stylesheet" href="/src/css/components/slideshow.css">
-  <link rel="stylesheet" href="/src/css/components/products.css">
-  <link rel="stylesheet" href="/src/css/components/forms.css">
-  <link rel="stylesheet" href="/src/css/components/admin.css">
-  <link rel="stylesheet" href="/src/css/pages/home.css">
-  <link rel="stylesheet" href="/src/css/pages/contact.css">
-  <link rel="stylesheet" href="/src/css/pages/auth.css">
-  <link rel="stylesheet" href="/src/css/responsive.css">
 </head>
 <body>
-  <div id="app">
-    <!-- JavaScript will dynamically load page content here -->
-  </div>
+  <!-- Header -->
+  <header>
+    <nav class="container">
+      <a href="#" class="logo" onclick="showHome()">SIIA LUXE</a>
+      <ul class="nav-links">
+        <li><a href="#" onclick="showHome()">Home</a></li>
+        <li><a href="#" onclick="showProducts('all')">Shop</a></li>
+        <li><a href="#" onclick="showContact()">Contact Us</a></li>
+        <li><a href="#" onclick="showTrackOrder()">Track Order</a></li>
+        <li><a href="#" onclick="showLogin()">Login/Signup</a></li>
+        <li><a href="#" onclick="showAdmin()">Admin</a></li>
+      </ul>
+      <a href="#" class="cart-icon" onclick="alert('Cart functionality coming soon!')">🛒 Cart (0)</a>
+    </nav>
+  </header>
 
-  <!-- JavaScript Files -->
-  <script src="/src/js/main.js"></script>
-  <script src="/src/js/components/navigation.js"></script>
-  <script src="/src/js/components/slideshow.js"></script>
-  <script src="/src/js/pages/home.js"></script>
-  <script src="/src/js/pages/products.js"></script>
-  <script src="/src/js/pages/contact.js"></script>
-  <script src="/src/js/pages/auth.js"></script>
-  <script src="/src/js/pages/trackOrder.js"></script>
-  <script src="/src/js/pages/admin.js"></script>
+  <!-- Hero Slideshow -->
+  <section class="hero-section" id="home-section">
+    <div class="slideshow-container">
+      <div class="slide" id="slide-1"></div>
+      <div class="slide" id="slide-2"></div>
+      <div class="slide" id="slide-3"></div>
+      <div class="dots-container">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vision Section -->
+  <section id="vision-section"></section>
+
+  <!-- Categories Section -->
+  <section id="categories"></section>
+
+  <!-- Contact Section -->
+  <section id="contact-section" style="display:none;"></section>
+
+  <!-- Track Order Section -->
+  <section id="track-order-section" style="display:none;"></section>
+
+  <!-- Auth Section -->
+  <section id="login-section" style="display:none;"></section>
+
+  <!-- Products Section -->
+  <section id="products-section" style="display:none;"></section>
+
+  <!-- Admin Section -->
+  <section id="admin-section" style="display:none;"></section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>SIIA LUXE JEWELS</h3>
+          <p>Premium anti-tarnish jewelry crafted with love and precision. Experience luxury that lasts.</p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <p><a href="#" onclick="showHome()" style="color: #ccc;">Home</a></p>
+          <p><a href="#" onclick="showProducts('all')" style="color: #ccc;">Collections</a></p>
+          <p><a href="#" style="color: #ccc;">About Us</a></p>
+        </div>
+        <div class="footer-section">
+          <h3>Contact Info</h3>
+          <p>Email: info@siialuxe.com</p>
+          <p>Phone: +1 (555) 123-4567</p>
+        </div>
+      </div>
+      <p>&copy; 2025 SIIA LUXE JEWELS. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/src/js/main.js" defer></script>
 </body>
 </html>

@@ -1,9 +1,17 @@
 <!-- frontend/src/pages/shop.html -->
-<section class="products-section" id="products-section">
+<section class="shop-section" id="products-section">
   <div class="container">
-    <h2 class="section-title">Shop Our Collection</h2>
-    <div class="products-grid" id="products-grid">
-      <!-- Product cards will be dynamically loaded here -->
+    <h2 class="section-title">Explore Our Products</h2>
+    <div class="filters">
+      <button onclick="showProducts('all')">All</button>
+      <button onclick="showProducts('necklaces')">Necklaces</button>
+      <button onclick="showProducts('earrings')">Earrings</button>
+      <button onclick="showProducts('bracelets')">Bracelets</button>
+      <button onclick="showProducts('rings')">Rings</button>
+      <button onclick="showProducts('sets')">Jewelry Sets</button>
+    </div>
+    <div class="products-grid" id="product-list">
+      <!-- Products will be rendered here by products.js -->
     </div>
   </div>
 </section>
