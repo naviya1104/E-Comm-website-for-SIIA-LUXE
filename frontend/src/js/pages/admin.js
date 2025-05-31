@@ -30,9 +30,9 @@ export default function renderAdmin() {
     const image = document.getElementById('product-image').value;
 
     const product = { name, category, price, description, image };
-    const products = JSON.parse(localStorage.getItem('products')) || [];
+    let products = [];
+    // localStorage usage removed as per requirements
     products.push(product);
-    localStorage.setItem('products', JSON.stringify(products));
     alert('Product added successfully!');
   });
 }

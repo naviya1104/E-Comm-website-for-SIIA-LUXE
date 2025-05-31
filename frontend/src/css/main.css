@@ -1,0 +1,16 @@
+@import './utils/variables.css';
+@import './utils/mixins.css';
+@import './utils/reset.css';
+@import './responsive.css';
+
+@import './components/header.css';
+@import './components/footer.css';
+@import './components/slideshow.css';
+@import './components/products.css';
+@import './components/forms.css';
+@import './components/admin.css';
+
+@import './pages/home.css';
+@import './pages/shop.css';
+@import './pages/contact.css';
+@import './pages/auth.css';
