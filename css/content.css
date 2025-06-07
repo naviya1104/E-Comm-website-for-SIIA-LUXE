@@ -1,7 +1,10 @@
 body
 {
     margin: 0;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Playfair Display', serif;
+    background-color: #f5f0e6;
+    color: #3b2f2f;
+    overflow-x: hidden;
 }
 h1
 {
@@ -11,61 +14,176 @@ h1
     letter-spacing: 2px;
     font-weight: 700;
     text-transform: capitalize;
+    color: #3b2f2f;
 }
-#containerClothing, #containerAccessories
+#containerProducts
 {
     display: grid;
-    grid-gap: 70px 20px;
-    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 30px 30px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     width: 90%;
-    margin: auto;
+    margin: 0 auto;
     padding-bottom: 40px;
 }
-#box 
+#containerTopGlam
 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 50px;
+    width: 90%;
+    margin: 0 auto;
+    padding-bottom: 40px;
+}
+#containerTopGlam .box
+{
+    width: 220px;
+    min-height: auto;
+    overflow: visible;
+    margin: 0;
+    box-shadow: none;
+    border-radius: 50%;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#containerTopGlam .box img
+{
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
+    transition: transform 0.3s ease;
+}
+#containerTopGlam .box img:hover
+{
+    transform: scale(1.2);
+    z-index: 10;
+}
+#containerTopGlam .box .details
+{
+    margin-top: 15px;
+    text-align: center;
     width: 100%;
-    background-color: white;
-    align-content: center;
-    border-radius: 10px;
-    box-shadow: 1px 2px 6px 2px rgb(219, 219, 219);
+    background-color: transparent;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.1em;
 }
-#box:hover
+#containerTopGlam .box:hover
 {
-    box-shadow: 1px 6px 3px 0 rgb(185, 185, 185);
+    box-shadow: none;
+    z-index: 10;
 }
-#containerClothing img
+#containerTopGlam .box h3,
+#containerTopGlam .box h4,
+#containerTopGlam .box button
 {
+    margin: 5px 0;
+    text-align: center;
+}
+#containerTopGlam .box button
+{
+    background-color: transparent;
+    border: 2px solid #bfa87a;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #3b2f2f;
+    cursor: pointer;
+    font-weight: bold;
+}
+#containerTopGlam .box button:hover
+{
+    background-color: #a68a4a;
+    color: white;
+}
+
+#containerProducts .box
+{
+    width: 220px !important;
+    border-radius: 0 !important;
+    overflow: visible !important;
+    margin: auto;
+    box-shadow: none !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#containerProducts .box:hover
+{
+    transform: none;
+    box-shadow: none;
+    z-index: auto;
+}
+#containerProducts .box img:hover
+{
+    transform: scale(1.2);
+    box-shadow: 1px 6px 10px 4px rgba(191, 168, 122, 0.7);
+    z-index: 10;
+}
+#containerProducts .box img,
+#containerProducts .box img * {
+    border-radius: 15px !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+    transition: box-shadow 0.3s ease;
+}
+#containerProducts .box img:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2) !important;
+}
+#containerProducts .box img
+{
+    width: 220px !important;
+    height: 220px !important;
+    object-fit: cover !important;
+    display: block !important;
+    margin: 0 auto 10px auto !important;
+}
+#containerProducts .box .details
+{
+    margin-top: 15px;
+    text-align: center;
     width: 100%;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    background-color: transparent;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.1em;
 }
-#containerAccessories img
+#containerProducts .box h3,
+#containerProducts .box h4,
+#containerProducts .box button
 {
-    width: 100%;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    margin: 5px 0;
+    text-align: center;
 }
-#details
+#containerProducts .box button
 {
-    padding: 0 15px;
-    text-transform: capitalize;
+    background-color: transparent;
+    border: 2px solid #bfa87a;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #3b2f2f;
+    cursor: pointer;
+    font-weight: bold;
 }
-#box a 
+#containerProducts .box button:hover
 {
-    text-decoration: none;
-    color: rgb(29, 29, 29);
-}
-h3
-{
-    font-size: 16px;
-}
-h4
-{
-    font-weight: 100;
-}
-h2
-{
-    color: rgb(3, 94, 94);
+    background-color: #a68a4a;
+    color: white;
 }
 
 /* ----------------------------- MEDIA QUERY --------------------------- */
@@ -76,7 +194,7 @@ h2
     {
         font-size: 25px;
     }
-    #containerClothing, #containerAccessories
+    #containerTopGlam, #containerProducts
     {
         width: 95%;
         grid-gap: 10px;
@@ -88,7 +206,7 @@ h2
     {
         width: 80%;
     }
-    #containerClothing, #containerAccessories
+    #containerTopGlam, #containerProducts
     {
         display: grid;
         grid-gap: 70px 20px;
@@ -106,7 +224,7 @@ h2
     {
         width: 90%;
     }
-    #containerClothing, #containerAccessories
+    #containerTopGlam, #containerProducts
     {
         width: 90%;
     }
@@ -117,7 +235,7 @@ h2
     {
         width: 70%;
     }
-    #containerClothing, #containerAccessories
+    #containerTopGlam, #containerProducts
     {
         width: 70%;
     }
@@ -128,7 +246,7 @@ h2
     {
         width: 80%;
     }
-    #containerClothing, #containerAccessories
+    #containerTopGlam, #containerProducts
     {
         width: 80%;
         grid-template-columns: repeat(2, 1fr);

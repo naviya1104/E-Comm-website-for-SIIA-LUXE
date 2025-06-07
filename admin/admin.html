@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin Dashboard - E-Commerce Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f0e6;
+            color: #3b2f2f;
+        }
+        h1 {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+        }
+        section {
+            margin-bottom: 40px;
+            border: 1px solid #bfa87a;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: white;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input[type="file"], textarea, input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 12px;
+            border: 1px solid #bfa87a;
+            border-radius: 4px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            color: #3b2f2f;
+        }
+        button {
+            background-color: #bfa87a;
+            border: none;
+            padding: 10px 20px;
+            color: #3b2f2f;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #a88e5a;
+        }
+        .image-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .image-list img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border: 1px solid #bfa87a;
+            border-radius: 4px;
+        }
+        .image-item {
+            position: relative;
+        }
+        .image-item button {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            background-color: #e74c3c;
+            color: white;
+            padding: 2px 6px;
+            font-size: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Admin Dashboard</h1>
+
+    <section id="slideshow-section">
+        <h2>Manage Slideshow Images</h2>
+        <input type="file" id="slideshow-upload" accept="image/*" />
+        <button onclick="uploadImage('slideshow')">Upload Slideshow Image</button>
+        <div class="image-list" id="slideshow-images"></div>
+    </section>
+
+    <section id="ourstory-section">
+        <h2>Edit Our Story</h2>
+        <textarea id="ourstory-text" rows="6"></textarea>
+        <button onclick="updateOurStory()">Save Our Story</button>
+    </section>
+
+    <section id="topglam-section">
+        <h2>Manage Top Glam Images</h2>
+        <input type="file" id="topglam-upload" accept="image/*" />
+        <label for="topglam-name">Product Name:</label>
+        <input type="text" id="topglam-name" placeholder="Enter product name" />
+        <label for="topglam-price">Price (₹):</label>
+        <input type="number" id="topglam-price" placeholder="Enter price in rupees" />
+        <button onclick="uploadImage('topGlam')">Upload Top Glam Image</button>
+        <div class="image-list" id="topglam-images"></div>
+    </section>
+
+    <section id="products-section">
+        <h2>Manage Products Images</h2>
+        <input type="file" id="products-upload" accept="image/*" />
+        <label for="products-name">Product Name:</label>
+        <input type="text" id="products-name" placeholder="Enter product name" />
+        <label for="products-price">Price (₹):</label>
+        <input type="number" id="products-price" placeholder="Enter price in rupees" />
+        <button onclick="uploadImage('products')">Upload Products Image</button>
+        <div class="image-list" id="products-images"></div>
+    </section>
+
+    <script>
+        const apiBase = 'http://localhost:3001/api';
+
+        async function fetchContent() {
+            const res = await fetch(apiBase + '/content');
+            const data = await res.json();
+            document.getElementById('ourstory-text').value = data.ourStory || '';
+
+            // Slideshow images are not stored in DB, so fetch from separate API or keep empty
+            renderImages('slideshow-images', data.slideshowImages || [], 'slideshow');
+            renderImages('topglam-images', data.topGlam || [], 'topGlam');
+            renderImages('products-images', data.products || [], 'products');
+        }
+
+        function renderImages(containerId, images, type) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            images.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'image-item';
+
+                const img = document.createElement('img');
+                img.src = 'http://localhost:3001' + item.image;
+                div.appendChild(img);
+
+                const name = document.createElement('h3');
+                name.textContent = item.name;
+                div.appendChild(name);
+
+                const price = document.createElement('h4');
+                price.textContent = '₹' + item.price.toFixed(2);
+                div.appendChild(price);
+
+                const btn = document.createElement('button');
+                btn.textContent = '×';
+                btn.onclick = () => deleteImage(item.image, type);
+                div.appendChild(btn);
+
+                container.appendChild(div);
+            });
+        }
+
+        async function uploadImage(type) {
+            const input = document.getElementById(type.toLowerCase() + '-upload');
+            const nameInput = document.getElementById(type.toLowerCase() + '-name');
+            const priceInput = document.getElementById(type.toLowerCase() + '-price');
+
+            if (!input.files.length) {
+                alert('Please select an image to upload.');
+                return;
+            }
+            if ((type === 'topGlam' || type === 'products') && (!nameInput.value || !priceInput.value)) {
+                alert('Please enter product name and price.');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('image', input.files[0]);
+            if (type === 'topGlam' || type === 'products') {
+                formData.append('name', nameInput.value);
+                formData.append('price', priceInput.value);
+            }
+
+            const res = await fetch(`${apiBase}/upload/${type}`, {
+                method: 'POST',
+                body: formData
+            });
+            if (res.ok) {
+                alert('Image uploaded successfully.');
+                input.value = '';
+                if (nameInput) nameInput.value = '';
+                if (priceInput) priceInput.value = '';
+                fetchContent();
+            } else {
+                alert('Failed to upload image.');
+            }
+        }
+
+        async function deleteImage(url, type) {
+            if (!confirm('Are you sure you want to delete this image?')) return;
+            // Ensure url has leading slash to match backend stored image path
+            if (!url.startsWith('/')) {
+                url = '/' + url;
+            }
+            const res = await fetch(`${apiBase}/image`, {
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ url, type })
+            });
+            if (res.ok) {
+                alert('Image deleted successfully.');
+                fetchContent();
+            } else {
+                alert('Failed to delete image.');
+            }
+        }
+
+        async function updateOurStory() {
+            const text = document.getElementById('ourstory-text').value;
+            const res = await fetch(`${apiBase}/ourStory`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ text })
+            });
+            if (res.ok) {
+                alert('Our Story updated successfully.');
+            } else {
+                alert('Failed to update Our Story.');
+            }
+        }
+
+        fetchContent();
+    </script>
+</body>
+</html>

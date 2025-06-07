@@ -1,0 +1,29 @@
+{
+  "slideshowImages": [],
+  "ourStory": "helllooooooooooooooooo im naviyaaaaaaaaaaaa",
+  "topGlam": [
+    {
+      "image": "/uploads/1749314558460-WhatsApp Image 2025-06-07 at 8.59.53 PM.jpeg",
+      "name": "Double chain",
+      "price": 300
+    },
+    {
+      "image": "/uploads/1749314894799-WhatsApp Image 2025-06-07 at 8.59.53 PM.jpeg",
+      "name": "chain",
+      "price": 200
+    },
+    {
+      "id": 1749315580615,
+      "image": "/uploads/1749315580030-WhatsApp Image 2025-06-07 at 8.59.53 PM.jpeg",
+      "name": "asdf",
+      "price": 123
+    }
+  ],
+  "products": [
+    {
+      "image": "/uploads/1749314592270-WhatsApp Image 2025-06-07 at 8.59.53 PM.jpeg",
+      "name": "chain",
+      "price": 200
+    }
+  ]
+}

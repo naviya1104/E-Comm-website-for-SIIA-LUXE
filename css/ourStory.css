@@ -1,0 +1,25 @@
+#ourStory {
+    width: 90%;
+    margin: 40px auto;
+    font-family: 'Playfair Display', serif;
+    color: #3b2f2f;
+}
+
+#ourStory h2 {
+    font-size: 2.5em;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #3b2f2f;
+}
+
+#ourStory p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    color: #3b2f2f;
+}

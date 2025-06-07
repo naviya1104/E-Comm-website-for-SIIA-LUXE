@@ -1,91 +1,92 @@
-// console.clear();
-
-let contentTitle;
-
-console.log(document.cookie);
-function dynamicClothingSection(ob) {
-  let boxDiv = document.createElement("div");
-  boxDiv.id = "box";
-
-  let boxLink = document.createElement("a");
-  // boxLink.href = '#'
-  boxLink.href = "/contentDetails.html?" + ob.id;
-  // console.log('link=>' + boxLink);
-
-  let imgTag = document.createElement("img");
-  // imgTag.id = 'image1'
-  // imgTag.id = ob.photos
-  imgTag.src = ob.preview;
-
-  let detailsDiv = document.createElement("div");
-  detailsDiv.id = "details";
-
-  let h3 = document.createElement("h3");
-  let h3Text = document.createTextNode(ob.name);
-  h3.appendChild(h3Text);
-
-  let h4 = document.createElement("h4");
-  let h4Text = document.createTextNode(ob.brand);
-  h4.appendChild(h4Text);
-
-  let h2 = document.createElement("h2");
-  let h2Text = document.createTextNode("rs  " + ob.price);
-  h2.appendChild(h2Text);
-
-  boxDiv.appendChild(boxLink);
-  boxLink.appendChild(imgTag);
-  boxLink.appendChild(detailsDiv);
-  detailsDiv.appendChild(h3);
-  detailsDiv.appendChild(h4);
-  detailsDiv.appendChild(h2);
-
-  return boxDiv;
+if (typeof window.apiBase === 'undefined') {
+    window.apiBase = 'http://127.0.0.1:3001/api';
 }
 
-//  TO SHOW THE RENDERED CODE IN CONSOLE
-// console.log(dynamicClothingSection());
+async function loadContentImages() {
+    try {
+        const res = await fetch(window.apiBase + '/content');
+        const data = await res.json();
 
-// console.log(boxDiv)
+        const topGlamContainer = document.getElementById('containerTopGlam');
+        topGlamContainer.innerHTML = '';
+        data.topGlam.forEach(product => {
+            const box = document.createElement('div');
+            box.className = 'box';
 
-let mainContainer = document.getElementById("mainContainer");
-let containerClothing = document.getElementById("containerClothing");
-let containerAccessories = document.getElementById("containerAccessories");
-// mainContainer.appendChild(dynamicClothingSection('hello world!!'))
+            const img = document.createElement('img');
+            img.src = 'http://127.0.0.1:3001' + product.image;
+            box.appendChild(img);
 
-// BACKEND CALLING
+            const details = document.createElement('div');
+            details.className = 'details';
 
-let httpRequest = new XMLHttpRequest();
+            const name = document.createElement('h3');
+            name.textContent = product.name;
+            details.appendChild(name);
 
-httpRequest.onreadystatechange = function() {
-  if (this.readyState === 4) {
-    if (this.status == 200) {
-      // console.log('call successful');
-      contentTitle = JSON.parse(this.responseText);
-      if (document.cookie.indexOf(",counter=") >= 0) {
-        var counter = document.cookie.split(",")[1].split("=")[1];
-        document.getElementById("badge").innerHTML = counter;
-      }
-      for (let i = 0; i < contentTitle.length; i++) {
-        if (contentTitle[i].isAccessory) {
-          console.log(contentTitle[i]);
-          containerAccessories.appendChild(
-            dynamicClothingSection(contentTitle[i])
-          );
-        } else {
-          console.log(contentTitle[i]);
-          containerClothing.appendChild(
-            dynamicClothingSection(contentTitle[i])
-          );
-        }
-      }
-    } else {
-      console.log("call failed!");
+            const price = document.createElement('h4');
+            price.textContent = '₹' + product.price.toFixed(2);
+            details.appendChild(price);
+
+            const addToCartBtn = document.createElement('button');
+            addToCartBtn.textContent = 'Add to Cart';
+            addToCartBtn.onclick = () => addToCart(product._id);
+            details.appendChild(addToCartBtn);
+
+            box.appendChild(details);
+
+            topGlamContainer.appendChild(box);
+        });
+
+        const productsContainer = document.getElementById('containerProducts');
+        productsContainer.innerHTML = '';
+        data.products.forEach(product => {
+            const box = document.createElement('div');
+            box.className = 'box';
+
+            const img = document.createElement('img');
+            img.src = 'http://127.0.0.1:3001' + product.image;
+            img.style.width = '160px';
+            img.style.height = '160px';
+            img.style.borderRadius = '0';
+            box.appendChild(img);
+
+            const details = document.createElement('div');
+            details.className = 'details';
+
+            const name = document.createElement('h3');
+            name.textContent = product.name;
+            details.appendChild(name);
+
+            const price = document.createElement('h4');
+            price.textContent = '₹' + product.price.toFixed(2);
+            details.appendChild(price);
+
+            const addToCartBtn = document.createElement('button');
+            addToCartBtn.textContent = 'Add to Cart';
+            addToCartBtn.onclick = () => addToCart(product._id);
+            details.appendChild(addToCartBtn);
+
+            box.appendChild(details);
+
+            productsContainer.appendChild(box);
+        });
+    } catch (error) {
+        console.error('Failed to load content images:', error);
     }
-  }
-};
-httpRequest.open(
-  "GET",
-  "https://5d76bf96515d1a0014085cf9.mockapi.io/product",
-  true
-);
-httpRequest.send();
+}
+
+function addToCart(productId) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const existingItem = cart.find(item => item.id === productId);
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({ id: productId, quantity: 1 });
+    }
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert('Product added to cart!');
+    console.log('Cart:', cart);
+}
+
+loadContentImages();
